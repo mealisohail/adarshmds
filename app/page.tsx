@@ -109,7 +109,7 @@ export default function Home() {
         </section>
 
         {/* RTO + INSURANCE */}
-        <section id="rto" className="section section-grey">
+        <section id="rto" className="section on-red red-700">
           <div className="wrap split">
             <div>
               <h2>RTO work, done for you</h2>
@@ -178,7 +178,7 @@ export default function Home() {
         </section>
 
         {/* ENQUIRE */}
-        <section id="enquire" className="section section-dark">
+        <section id="enquire" className="section on-red red-600">
           <div className="wrap split">
             <div>
               <h2>Ask about a batch</h2>
@@ -198,7 +198,7 @@ export default function Home() {
         </section>
 
         {/* FAQ */}
-        <section id="faq" className="section">
+        <section id="faq" className="section red-tint">
           <div className="wrap narrow">
             <h2>Common questions</h2>
             <div className="faq">
@@ -213,7 +213,7 @@ export default function Home() {
         </section>
 
         {/* CONTACT */}
-        <section id="contact" className="section section-grey">
+        <section id="contact" className="section on-red red-800">
           <div className="wrap split">
             <div>
               <h2>Find us</h2>
