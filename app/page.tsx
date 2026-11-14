@@ -33,7 +33,7 @@ export default function Home() {
               <p className="hero-kicker" lang="mr">सरकार मान्य, RTO Akola recognised</p>
               <h1>Car driving classes and licence help in Akot</h1>
               <p className="hero-lede">
-                Learn to drive with patient, practical lessons on real roads. Car training from {rupees(3500)}, plus learner
+                Learn to drive with patient, practical lessons on real roads. Car training from {rupees(3500)}, two-wheeler training from {rupees(999)}, plus learner
                 licence, driving licence and every other RTO job under one roof, near City Police Station on Akola Road.
               </p>
               <div className="hero-cta">

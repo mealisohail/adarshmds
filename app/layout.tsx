@@ -9,7 +9,7 @@ const deva = Noto_Sans_Devanagari({ subsets: ["devanagari"], weight: ["500", "70
 
 const title = "Adarsh Motor Driving School Akot | Car Driving Classes & RTO Licence Help";
 const description =
-  "Government-recognised driving school in Akot, near City Police Station, Akola Road. Car driving training from ₹3,500, learner & driving licence, DL renewal, RTO work and vehicle insurance. Call 93715 33138.";
+  "Government-recognised driving school in Akot, near City Police Station, Akola Road. Car training from ₹3,500, two-wheeler training from ₹999, learner & driving licence, DL renewal, RTO work and vehicle insurance. Call 93715 33138.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     "learner licence Akot",
     "RTO agent Akot",
     "four wheeler training Akot",
+    "two wheeler training Akot",
     "driving school Akola district",
     "आदर्श मोटर ड्रायव्हींग स्कुल आकोट",
   ],
@@ -59,7 +60,7 @@ const jsonLd = {
       ],
       description,
       telephone: PHONES.map((p) => p.e164),
-      priceRange: "₹2,500 – ₹6,750",
+      priceRange: "₹999 – ₹6,750",
       address: {
         "@type": "PostalAddress",
         streetAddress: ADDRESS.street,

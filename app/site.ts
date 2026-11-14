@@ -58,6 +58,16 @@ export const PACKAGES: Pkg[] = [
     price: 2500,
     includes: ["Day driving, reverse & box parking, night driving", "For learners who already know the basics"],
   },
+  {
+    name: "Two-wheeler training (12 days)",
+    price: 1650,
+    includes: ["12 days of practical riding lessons", "Balance, braking and riding safely in traffic"],
+  },
+  {
+    name: "Two-wheeler training (6 days)",
+    price: 999,
+    includes: ["6 days of practical riding lessons", "Balance, braking and riding safely in traffic"],
+  },
 ];
 
 export const ADVANCED_PLAN = [
@@ -90,8 +100,8 @@ export const INSURERS = [
 
 export const FAQS = [
   {
-    q: "How much do car driving classes cost in Akot?",
-    a: "Car training alone is ₹3,500. With the four-wheeler licence process it is ₹5,750, and with both two-wheeler and four-wheeler licences it is ₹6,750. The 12-day advanced course is ₹2,500.",
+    q: "How much do driving classes cost in Akot?",
+    a: "Car training alone is ₹3,500. With the four-wheeler licence process it is ₹5,750, and with both two-wheeler and four-wheeler licences it is ₹6,750. The 12-day advanced car course is ₹2,500, and two-wheeler training is ₹999 for 6 days or ₹1,650 for 12 days.",
   },
   {
     q: "Are RTO and government fees included in the package?",
