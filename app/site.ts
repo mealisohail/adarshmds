@@ -3,6 +3,13 @@
 // TODO before launch: replace with the real domain once bought.
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://adarshmotordrivingschool.in";
 
+// Discount shown on every package. Set to 0 to switch the offer off everywhere.
+export const DISCOUNT = 10;
+// false = hide rupee amounts and show only the offer; people call/WhatsApp for the fee.
+export const SHOW_PRICES = false;
+export const rupees = (n: number) => `₹${n.toLocaleString("en-IN")}`;
+export const offerPrice = (n: number) => Math.round((n * (100 - DISCOUNT)) / 100);
+
 export const NAME = "Adarsh Motor Driving School Akot";
 export const NAME_MR = "आदर्श मोटर ड्रायव्हींग स्कुल आकोट";
 
@@ -101,7 +108,9 @@ export const INSURERS = [
 export const FAQS = [
   {
     q: "How much do driving classes cost in Akot?",
-    a: "Car training alone is ₹3,500. With the four-wheeler licence process it is ₹5,750, and with both two-wheeler and four-wheeler licences it is ₹6,750. The 12-day advanced car course is ₹2,500, and two-wheeler training is ₹999 for 6 days or ₹1,650 for 12 days.",
+    a: !SHOW_PRICES
+      ? `Every package currently has ${DISCOUNT}% off. Call or WhatsApp us on 93715 33138 and we will tell you the exact fee for the course you want.`
+      : `With our ${DISCOUNT}% discount: car training alone is ${rupees(offerPrice(3500))}. With the four-wheeler licence process it is ${rupees(offerPrice(5750))}, and with both two-wheeler and four-wheeler licences it is ${rupees(offerPrice(6750))}. The 12-day advanced car course is ${rupees(offerPrice(2500))}, and two-wheeler training is ${rupees(offerPrice(999))} for 6 days or ${rupees(offerPrice(1650))} for 12 days.`,
   },
   {
     q: "Are RTO and government fees included in the package?",
@@ -129,4 +138,3 @@ export const FAQS = [
   },
 ];
 
-export const rupees = (n: number) => `₹${n.toLocaleString("en-IN")}`;

@@ -1,6 +1,6 @@
 "use client";
 
-import { PACKAGES, rupees, waLink } from "./site";
+import { offerPrice, PACKAGES, rupees, SHOW_PRICES, waLink } from "./site";
 
 // ponytail: no backend — the form just composes a WhatsApp message. Add an API route if they want leads stored.
 export default function EnquiryForm() {
@@ -36,7 +36,7 @@ export default function EnquiryForm() {
         <select name="course" required defaultValue="">
           <option value="" disabled>Choose a course</option>
           {PACKAGES.map((p) => (
-            <option key={p.name}>{`${p.name} — ${rupees(p.price)}`}</option>
+            <option key={p.name}>{SHOW_PRICES ? `${p.name} — ${rupees(offerPrice(p.price))}` : p.name}</option>
           ))}
           <option>RTO / licence work only</option>
           <option>Vehicle insurance</option>

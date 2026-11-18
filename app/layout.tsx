@@ -1,15 +1,15 @@
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Manrope, Noto_Sans_Devanagari } from "next/font/google";
 import "./globals.css";
-import { ADDRESS, FAQS, HOURS, MAPS_URL, NAME, NAME_MR, PACKAGES, PHONES, SITE_URL } from "./site";
+import { ADDRESS, DISCOUNT, FAQS, SHOW_PRICES, HOURS, MAPS_URL, NAME, NAME_MR, offerPrice, PACKAGES, PHONES, rupees, SITE_URL } from "./site";
 
 const display = Bricolage_Grotesque({ subsets: ["latin"], weight: ["600", "700", "800"], variable: "--font-display" });
 const body = Manrope({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-body" });
 const deva = Noto_Sans_Devanagari({ subsets: ["devanagari"], weight: ["500", "700", "800"], variable: "--font-deva" });
 
 const title = "Adarsh Motor Driving School Akot | Car Driving Classes & RTO Licence Help";
-const description =
-  "Government-recognised driving school in Akot, near City Police Station, Akola Road. Car training from ₹3,500, two-wheeler training from ₹999, learner & driving licence, DL renewal, RTO work and vehicle insurance. Call 93715 33138.";
+const prices = PACKAGES.map((p) => offerPrice(p.price));
+const description = `Government-recognised driving school in Akot, near City Police Station, Akola Road. ${SHOW_PRICES ? `${DISCOUNT}% off all packages: car training ${rupees(offerPrice(3500))}, two-wheeler training from ${rupees(offerPrice(999))}.` : `Car and two-wheeler training with ${DISCOUNT}% off every package.`} Learner & driving licence, RTO work and vehicle insurance. Call 93715 33138.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -60,7 +60,7 @@ const jsonLd = {
       ],
       description,
       telephone: PHONES.map((p) => p.e164),
-      priceRange: "₹999 – ₹6,750",
+      ...(SHOW_PRICES ? { priceRange: `${rupees(Math.min(...prices))} – ${rupees(Math.max(...prices))}` } : {}),
       address: {
         "@type": "PostalAddress",
         streetAddress: ADDRESS.street,
@@ -74,8 +74,7 @@ const jsonLd = {
       openingHours: HOURS.map((h) => h.schema),
       makesOffer: PACKAGES.map((p) => ({
         "@type": "Offer",
-        price: p.price,
-        priceCurrency: "INR",
+        ...(SHOW_PRICES ? { price: offerPrice(p.price), priceCurrency: "INR" } : { description: `${DISCOUNT}% off` }),
         itemOffered: { "@type": "Service", name: p.name },
       })),
     },

@@ -3,7 +3,7 @@ import EnquiryForm from "./EnquiryForm";
 import Header from "./Header";
 import { PhoneIcon, WaIcon } from "./icons";
 import {
-  ADDRESS, ADVANCED_PLAN, FAQS, HOURS, INSURERS, MAPS_URL, NAME, NAME_MR, PACKAGES, PHONES, RTO_SERVICES, rupees, waLink,
+  ADDRESS, ADVANCED_PLAN, DISCOUNT, FAQS, SHOW_PRICES, HOURS, INSURERS, MAPS_URL, NAME, NAME_MR, PACKAGES, offerPrice, PHONES, RTO_SERVICES, rupees, waLink,
 } from "./site";
 
 import carFrontSide from "@/public/images/training-car-akot-front-side.jpg";
@@ -33,7 +33,10 @@ export default function Home() {
               <p className="hero-kicker" lang="mr">सरकार मान्य, RTO Akola recognised</p>
               <h1>Car driving classes and licence help in Akot</h1>
               <p className="hero-lede">
-                Learn to drive with patient, practical lessons on real roads. Car training from {rupees(3500)}, two-wheeler training from {rupees(999)}, plus learner
+                Learn to drive with patient, practical lessons on real roads.{" "}
+                {SHOW_PRICES
+                  ? <>Car training from {rupees(offerPrice(3500))}, two-wheeler training from {rupees(offerPrice(999))}, plus learner</>
+                  : <>Car and two-wheeler training, now with {DISCOUNT}% off every package, plus learner</>}
                 licence, driving licence and every other RTO job under one roof, near City Police Station on Akola Road.
               </p>
               <div className="hero-cta">
@@ -59,8 +62,16 @@ export default function Home() {
         {/* FEES */}
         <section id="fees" className="section">
           <div className="wrap">
-            <h2>Training fees</h2>
-            <p className="lede">One price per package. Ask us about batch timings when you call.</p>
+            <h2>{SHOW_PRICES ? "Training fees" : "Training packages"}</h2>
+            <p className="lede">
+              {SHOW_PRICES ? "One price per package." : "Call or WhatsApp us for the fee of any package."} Ask us about batch timings when you call.
+            </p>
+            {DISCOUNT > 0 && (
+              <p className="offer-banner">
+                <strong>{DISCOUNT}% off</strong> on every package.{" "}
+                {SHOW_PRICES ? "The discount is already applied to the prices below." : "Mention this offer when you enquire."}
+              </p>
+            )}
 
             <div className="board">
               <div className="board-head" lang="mr">
@@ -80,12 +91,28 @@ export default function Home() {
                         {p.includes.map((i) => <li key={i}>{i}</li>)}
                       </ul>
                     </div>
+                    {!SHOW_PRICES ? (
                     <div className="board-price">
-                      <strong>{rupees(p.price)}</strong>
-                      <a href={waLink(`Namaste! I am interested in: ${p.name} (${rupees(p.price)}).`)} target="_blank" rel="noopener">
+                      {DISCOUNT > 0 && <span className="offer-pill">{DISCOUNT}% off</span>}
+                      <a href={waLink(`Namaste! I am interested in: ${p.name}. Please tell me the fee with the ${DISCOUNT}% offer.`)} target="_blank" rel="noopener">
+                        Get the fee
+                      </a>
+                    </div>
+                    ) : (
+                    <div className="board-price">
+                      {DISCOUNT > 0 && (
+                        <span className="price-was">
+                          <s aria-label={`Regular price ${rupees(p.price)}`}>{rupees(p.price)}</s>
+                          <span className="off">{DISCOUNT}% off</span>
+                        </span>
+                      )}
+                      <strong>{rupees(offerPrice(p.price))}</strong>
+                      {DISCOUNT > 0 && <span className="save">You save {rupees(p.price - offerPrice(p.price))}</span>}
+                      <a href={waLink(`Namaste! I am interested in: ${p.name} (${rupees(offerPrice(p.price))} after ${DISCOUNT}% off).`)} target="_blank" rel="noopener">
                         Ask about this
                       </a>
                     </div>
+                    )}
                   </li>
                 ))}
               </ul>

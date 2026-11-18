@@ -181,9 +181,23 @@ figure { margin: 0; }
 .board-price strong { display: block; font-family: var(--display); font-size: clamp(1.9rem, 3.6vw, 2.4rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1; color: var(--ink); }
 .board-price a { display: inline-block; margin-top: 10px; font-weight: 700; font-size: .9rem; color: var(--red); text-decoration: none; padding: 6px 14px; border-radius: 999px; background: #fdecec; transition: background-color .2s; }
 .board-price a:hover { background: #fbd9d8; }
+/* 10% offer */
+.offer-banner { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; margin-top: 20px; padding: 10px 18px; border-radius: 14px; background: #fff4cc; color: #6b4f00; font-weight: 500; }
+.offer-banner strong { background: var(--red); color: #fff; padding: 2px 12px; border-radius: 999px; font-weight: 700; }
+.price-was { display: flex; justify-content: flex-end; align-items: center; gap: 8px; margin-bottom: 6px; }
+.price-was s { color: var(--muted); font-weight: 500; text-decoration-thickness: 1.5px; }
+.price-was .off { background: var(--red); color: #fff; font-size: .75rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; }
+.offer-pill { display: inline-block; background: var(--red); color: #fff; font-family: var(--display); font-weight: 700; font-size: clamp(1.3rem, 2.6vw, 1.6rem); letter-spacing: -0.02em; line-height: 1; padding: 10px 18px; border-radius: 999px; box-shadow: 0 8px 20px -10px rgb(227 33 27 / .7); }
+.board-price .offer-pill + a { display: block; width: fit-content; margin-left: auto; }
+@media (max-width: 640px) { .board-price .offer-pill + a { margin-left: 0; } .board-price .offer-pill { grid-column: 1; justify-self: start; align-self: center; font-size: 1.2rem; padding: 8px 16px; }
+  .board-price .offer-pill + a { align-self: center; } }
+.save { display: block; margin-top: 4px; color: #15803d; font-weight: 700; font-size: .875rem; }
 @media (max-width: 640px) {
   .board-row { grid-template-columns: 1fr; }
-  .board-price { text-align: left; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+  .board-price { text-align: left; display: grid; grid-template-columns: 1fr auto; align-items: end; column-gap: 12px; }
+  .board-price .price-was { justify-content: flex-start; grid-column: 1; }
+  .board-price strong, .board-price .save { grid-column: 1; }
+  .board-price a { grid-column: 2; grid-row: 1 / span 3; align-self: end; margin-top: 0; }
 }
 .note { margin-top: 16px; color: var(--muted); font-size: .95rem; max-width: 75ch; }
 
